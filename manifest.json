@@ -9,7 +9,7 @@
   },
   "browser_action": {
     "default_icon": "SnipSearchIcon1.png",
-    "default_title": "Snip&Search"
+    "default_title": "Snip&Search",
     "default_popup": "popup.html"
   },
   "background": {
