@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Snip&Search",
   "version": "1.0",
   "description": "A extension that snips a screenshot and then reverse image searches it",
@@ -10,6 +10,7 @@
   "browser_action": {
     "default_icon": "SnipSearchIcon1.png",
     "default_title": "Snip&Search"
+    "default_popup": "popup.html"
   },
   "background": {
     "scripts": ["background.js"]
