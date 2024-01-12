@@ -7,13 +7,12 @@
   "icons": {
     "128": "SnipSearchIcon1v2.png"
   },
-  "browser_action": {
+  "action": {
+    "default_popup": "popup.html",
     "default_icon": "SnipSearchIcon1v2.png",
-    "default_title": "Snip&Search",
-    "default_popup": "popup.html"
+    "default_title": "Snip&Search"
+  },
+  "background": {
+    "service_worker": "background.js"
   }
-  // ,
-  // "background": {
-  //   "service_worker": "background.js"
-  // }
 }
