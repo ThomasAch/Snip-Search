@@ -17,3 +17,7 @@ chrome.contextMenus.create({
   title: "Window Search",
   contexts: ["all"]
 });
+
+chrome.contextMenus.onClicked.addListener(function() {
+  //handle context menu actions
+ })
