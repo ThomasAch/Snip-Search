@@ -1,4 +1,4 @@
-console.log("hia")
+console.log("hib")
 
 //context menu buttons and id's
 chrome.contextMenus.create({
@@ -14,7 +14,7 @@ chrome.contextMenus.create({
 
 chrome.runtime.onInstalled.addListener(function() {
   chrome.contextMenus.create({
-    id: "window-search",
+    id: "window-search-contextMenu",
     title: "Window Search",
     contexts: ["all"]
   });
@@ -22,15 +22,30 @@ chrome.runtime.onInstalled.addListener(function() {
 
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "window-search") {
+  if (info.menuItemId === "window-search-contextMenu") {
     console.log("clicked")
     // Take a screenshot of the current tab
-    chrome.tabs.captureVisibleTab(tab.windowId, (screenshot) => {
-      // Save the screenshot to the user's Downloads folder
-      chrome.tabs.create({ url: screenshot });
-    });
+    windowSearch(tab);
   }
 });
+
+// Listen for a message from the content script.
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.type === "window-search-btn") {
+      // Perform an action here.
+      console.log('Button was clicked in the content script.');
+      windowSearch(request.tab);
+      // Send a response back to the content script.
+      sendResponse({message: 'Background script received the button click.'});
+  }
+});
+
+function windowSearch(tab){
+  chrome.tabs.captureVisibleTab(tab.windowId, (screenshot) => {
+    // Save the screenshot to the user's Downloads folder
+    chrome.tabs.create({ url: screenshot });
+  });
+}
 
 // chrome.contextMenus.onClicked.addListener(function(info, tab) {
 //   if (info.menuItemId === "window-search") {
