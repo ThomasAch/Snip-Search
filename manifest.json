@@ -3,7 +3,7 @@
   "name": "Snip&Search",
   "version": "1.0",
   "description": "A extension that snips a screenshot and then reverse image searches it",
-  "permissions": ["tabs", "contextMenus", "activeTab", "scripting"],
+  "permissions": ["tabs", "contextMenus", "activeTab", "scripting", "storage"],
   "icons": {
     "128": "SnipSearchIcon1v2.png"
   },

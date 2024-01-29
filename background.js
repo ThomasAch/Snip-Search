@@ -41,9 +41,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 });
 
 function windowSearch(tab){
-  chrome.tabs.captureVisibleTab(tab.windowId, (screenshot) => {
+  chrome.tabs.captureVisibleTab(tab.windowId, (screenshotURL) => {
+    chrome.storage.local.set({image: screenshotURL}, function() {
+      console.log('Image saved locally');
+  });
+  chrome.tabs.create({url: chrome.runtime.getURL('LinkPage.html'), active: true});
     // Save the screenshot to the user's Downloads folder
-    chrome.tabs.create({ url: screenshot });
+    // chrome.tabs.create({ url: screenshotURL });
   });
 }
 
